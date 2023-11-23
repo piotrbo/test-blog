@@ -1,6 +1,18 @@
 Wake-up Java 21 has come.
-If you are like me, finished education on Java 8 language features (functional programming with [streams](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html) and lambda), this is a good moment to recap what language features has been added in since 2014.
+If you are like me, finished education on Java 8 language features (functional programming with [Streams](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html) and Lambda or [Try With Resource Close](https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html), this is a good moment to recap what language features has been added since 2014.
 
+### Local Variable Type Inference
+```
+var url = new URL("http://www.oracle.com/"); 
+var conn = url.openConnection(); 
+var reader = new BufferedReader(
+    new InputStreamReader(conn.getInputStream()));
+```
+lambda expression with the var identifier:
+```
+(var a, var b) -> a + b;
+```
+See:[Java 17 doc for Local Variable Type Inference](https://docs.oracle.com/en/java/javase/17/language/local-variable-type-inference.html)
 ### Sealed Classes
 
 ```
@@ -82,11 +94,11 @@ My name is Duke
 See: [Java 21 doc for String Templates](https://docs.oracle.com/en/java/javase/21/language/string-templates.html)
 
 ---
-Beside language changes that actually makse java mor similar to Scala or Python
+Beside [language changes](https://docs.oracle.com/en/java/javase/21/language/java-language-changes.html) that actually makes Java more similar to Scala or Python
 There vare added JMV features like:
 
 ### Virtual Threads
-(important for performannce testers)
+(important for performance testers)
 
 Virtual thread isn't tied to a specific OS thread. A virtual thread still runs code on an OS thread. However, when code running in a virtual thread calls a blocking I/O operation, the Java runtime suspends the virtual thread until it can be resumed. The OS thread associated with the suspended virtual thread is now free to perform operations for other virtual threads.
 ```
@@ -102,3 +114,6 @@ try (ExecutorService myExecutor = Executors.newVirtualThreadPerTaskExecutor()) {
     // ...
 ```
 See: [Java 21 docs for Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)
+
+#### Hint (form experiennce):
+If your application under test has  Out Of Memory issues caused by growing number of threads. Ask for run it on Java 21 even if it is compiled compiled  with Java 11. Thanks to backward compatibility it is possible and you may see performance improvment even dought you don't you don't use the newest features explicite. 
