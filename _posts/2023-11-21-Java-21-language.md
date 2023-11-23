@@ -116,4 +116,4 @@ try (ExecutorService myExecutor = Executors.newVirtualThreadPerTaskExecutor()) {
 See: [Java 21 docs for Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)
 
 #### Hint (form experiennce):
-If your application under test has  Out Of Memory issues caused by growing number of threads. Ask for run it on Java 21 even if it is compiled compiled  with Java 11. Thanks to backward compatibility it is possible and you may see performance improvment even dought you don't you don't use the newest features explicite. 
+If your application under test has  Out Of Memory issues caused by growing number of threads. Ask for run it on Java 21 even if it is compiled  with Java 11. Thanks to backward compatibility it is possible and you may see performance improvement even though the newest features are not used in code explicite. (I guess it is a matter of some bugs fixed or JVM redesign).
