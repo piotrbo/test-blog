@@ -25,7 +25,7 @@ public final class Circle extends Shape {
     public float radius;
 }
 ```
-See [Java 17 doc for sealed-classes-and-interfaces](https://docs.oracle.com/en/java/javase/17/language/sealed-classes-and-interfaces.html)
+See: [Java 17 doc for sealed-classes-and-interfaces](https://docs.oracle.com/en/java/javase/17/language/sealed-classes-and-interfaces.html)
 
 ### Record Patterns
 ```
@@ -37,7 +37,7 @@ record Point(double x, double y) {}
         }
     }     
 ```
-See [Java 21 doc for record-patterns](https://docs.oracle.com/en/java/javase/21/language/record-patterns.html)
+See: [Java 21 doc for record-patterns](https://docs.oracle.com/en/java/javase/21/language/record-patterns.html)
 
 ### Pattern Matching for switch
 ```
@@ -54,7 +54,7 @@ record Circle(double radius) implements Shape { }
         }
     }
 ```
-See [Java 21 doc for  Pattern Matching for switch Expressions and Statements](https://docs.oracle.com/en/java/javase/21/language/pattern-matching-switch-expressions-and-statements.html)
+See: [Java 21 doc for  Pattern Matching for switch Expressions and Statements](https://docs.oracle.com/en/java/javase/21/language/pattern-matching-switch-expressions-and-statements.html)
 
 
 ### Text Blocks
@@ -115,6 +115,6 @@ try (ExecutorService myExecutor = Executors.newVirtualThreadPerTaskExecutor()) {
 ```
 See: [Java 21 docs for Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)
 
-#### Hint (from experiennce):
+#### Hint (from experience):
 My application under test (a test framework) had an Out Of Memory issues together with too many open files or growing number of threads (it was caused by JDK HttpClient usage in Selenium library - see [bug](https://github.com/SeleniumHQ/selenium/issues/12814#issuecomment-1824061807)).
 The solution was to run it on Java 21 even if the code is compiled  with Java 11. Thanks to backward compatibility it is possible and you may see performance improvement even though the newest features are not used in the code explicite. I guess it is a matter of some bugs fixed or JVM redesign.
