@@ -1,5 +1,5 @@
-Wake-up Java 21 is comming into Smart.
-If you are like me finished education on Java 8 language fatures (functional programming with streams and lambda) this is a good moment to recap what language features has been added in last years
+Wake-up Java 21 has come.
+If you are like me, finished education on Java 8 language features (functional programming with [streams](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html) and lambda), this is a good moment to recap what language features has been added in since 2014.
 
 ### Sealed Classes
 
@@ -80,3 +80,25 @@ output:
 My name is Duke
 ```
 See: [Java 21 doc for String Templates](https://docs.oracle.com/en/java/javase/21/language/string-templates.html)
+
+---
+Beside language changes that actually makse java mor similar to Scala or Python
+There vare added JMV features like:
+
+### Virtual Threads
+(important for performannce testers)
+
+Virtual thread isn't tied to a specific OS thread. A virtual thread still runs code on an OS thread. However, when code running in a virtual thread calls a blocking I/O operation, the Java runtime suspends the virtual thread until it can be resumed. The OS thread associated with the suspended virtual thread is now free to perform operations for other virtual threads.
+```
+Thread thread = Thread.ofVirtual().start(() -> System.out.println("Hello"));
+thread.join();
+```
+Executors let you to separate thread management and creation from the rest of your application.
+```
+try (ExecutorService myExecutor = Executors.newVirtualThreadPerTaskExecutor()) {
+    Future<?> future = myExecutor.submit(() -> System.out.println("Running thread"));
+    future.get();
+    System.out.println("Task completed");
+    // ...
+```
+See: [Java 21 docs for Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)
