@@ -116,5 +116,5 @@ try (ExecutorService myExecutor = Executors.newVirtualThreadPerTaskExecutor()) {
 See: [Java 21 docs for Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)
 
 #### Hint (from experiennce):
-My application under test (a test framework) had an Out Of Memory issues together with too many open files or growing number of threads (it was caused by JDK HttpClient usage in Selenium library).
+My application under test (a test framework) had an Out Of Memory issues together with too many open files or growing number of threads (it was caused by JDK HttpClient usage in Selenium library - see [bug](https://github.com/SeleniumHQ/selenium/issues/12814#issuecomment-1824061807)).
 The solution was to run it on Java 21 even if the code is compiled  with Java 11. Thanks to backward compatibility it is possible and you may see performance improvement even though the newest features are not used in the code explicite. I guess it is a matter of some bugs fixed or JVM redesign.
